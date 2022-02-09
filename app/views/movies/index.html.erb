@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <td>
+        Title
+      </td>
+      <td>
+        Director
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% movies.each do |movie| %>
+    <tr>
+      <td><%=movie.title %></td>
+      <td><%=movie.director %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%=button_to "Add New Movie", new_movie_path, method: :get %>

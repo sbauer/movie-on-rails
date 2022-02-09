@@ -48,11 +48,23 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test "counts movies with more facebook likes" do
-    movie1 = Movie.create!(title: "Movie 1", facebook_likes: 100)
-    movie2 = Movie.create!(title: "Movie 2", facebook_likes: 2)
+    Movie.create!(title: "Movie 1", facebook_likes: 100)
+    Movie.create!(title: "Movie 2", facebook_likes: 2)
 
     count = Movie.number_of_movies_with_facebook_likes_greater_than(10)
 
     assert_equal 1, count
+  end
+
+  test "visiting the index page" do
+    Movie.create(title: "Parasite", director: "Bong Joon-ho")
+    Movie.create(title: "Titanic", director: "James Cameron")
+
+    visit "/movies"
+
+    assert_text "Parasite"
+    assert_text "Bong Joon-ho"
+    assert_text "Titanic"
+    assert_text "James Cameron"
   end
 end

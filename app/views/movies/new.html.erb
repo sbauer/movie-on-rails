@@ -1,0 +1,17 @@
+<%= form_for @movie do |f| %>
+  <p>
+    <%=f.label :title, "Title" %> <%=f.text_field :title %>
+  </p>
+  <p>
+    <%=f.label :director, "Director" %> <%=f.text_field :director %>
+  </p>
+  <p>
+    <%=f.label :year, "Year" %> <%=f.text_field :year %>
+  </p>
+  <p>
+    <%=f.label :plot_keywords, "Plot Keywords" %> <%=f.text_field :plot_keywords %>
+  </p>
+  <p>
+    <%=f.submit "Create Movie" %>
+  </p>
+<% end %>
