@@ -2,12 +2,12 @@
 class MoviesController < ApplicationController
   def index
     movies = Movie.all.take(100)
-    render "movies/index", locals: { movies: movies }
+    render "index", locals: { movies: movies }
   end
 
   def show
     movie = Movie.find(params[:id])
-    render "movies/show", locals: { movie: movie }
+    render "show", locals: { movie: movie }
   end
 
   def new
@@ -17,11 +17,11 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
-    return render "movies/new" unless @movie.valid?
-
-    @movie.save
-
-    redirect_to @movie
+    if @movie.save
+      redirect_to @movie
+    else
+      render "new"
+    end
   end
 
   private
