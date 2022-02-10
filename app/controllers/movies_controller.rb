@@ -11,33 +11,35 @@ class MoviesController < ApplicationController
   end
 
   def new
-    @movie = Movie.new
+    movie = Movie.new
+    render "show", locals: { movie: movie }
   end
 
   def create
-    @movie = Movie.new(movie_params)
+    movie = Movie.new(movie_params)
 
-    if @movie.save
-      redirect_to @movie
+    if movie.save
+      redirect_to movie
     else
-      render "new"
+      render "new", locals: { movie: movie }
     end
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    movie = Movie.find(params[:id])
+    render "edit", locals: { movie: movie }
   end
 
   def update
-    @movie = Movie.find(params[:id])
+    movie = Movie.find(params[:id])
 
-    was_updated = @movie.update(movie_params)
+    was_updated = movie.update(movie_params)
 
     unless was_updated
-      return render "edit"
+      return render "edit", locals: { movie: movie }
     end
 
-    redirect_to @movie
+    redirect_to movie
   end
 
   private

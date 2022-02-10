@@ -1,4 +1,4 @@
-<%= form_for @movie do |f| %>
+<%= form_for movie do |f| %>
   <p>
     <%=f.label :title, "Title" %> <%=f.text_field :title %>
   </p>
@@ -12,6 +12,6 @@
     <%=f.label :plot_keywords, "Plot Keywords" %> <%=f.text_field :plot_keywords %>
   </p>
   <p>
-    <%=f.submit @movie.new_record? ? "Create Movie" : "Update" %>
+    <%=f.submit movie.new_record? ? "Create Movie" : "Update" %>
   </p>
 <% end %>
