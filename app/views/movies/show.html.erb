@@ -1,2 +1,4 @@
 <h1><%=movie.title %></h1>
 <h3><%=movie.director %></h3>
+
+<%=button_to "Edit Movie", edit_movie_path(movie), method: :get %>

@@ -47,4 +47,20 @@ class MoviesSystemTest < ApplicationSystemTestCase
     assert_text "Test Movie"
     assert_text "Good Director"
   end
+
+  test "editing a new movie" do
+    movie = Movie.create(title: "A Movie To Edit")
+
+    visit movie_path(movie.id)
+
+    click_on "Edit Movie"
+
+    assert_selector "form"
+
+    fill_in "Title", with: "Edited Movie"
+
+    click_on "Update"
+
+    assert_text "Edited Movie"
+  end
 end
