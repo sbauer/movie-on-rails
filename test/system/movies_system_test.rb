@@ -33,7 +33,7 @@ class MoviesSystemTest < ApplicationSystemTestCase
     assert_selector("form")
 
     fill_in :movie_title, with: "Test Movie"
-    select director.name, from: "Director"
+    fill_in "Director", with: director.name
     fill_in :movie_year, with: "1997"
     fill_in :movie_plot_keywords, with: "Good stuff"
 

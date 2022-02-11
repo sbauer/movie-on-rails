@@ -11,6 +11,15 @@ class Movie < ApplicationRecord
     black_and_white: 1
   }
 
+  def director_name
+    director&.name
+  end
+
+  def director_name=(name)
+    director = Director.find_by(name: name)
+    self.director = director || Director.create(name: name)
+  end
+
   def self.titles
     all.pluck(:title)
   end

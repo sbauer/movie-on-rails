@@ -1,9 +1,15 @@
+<ul>
+<% movie.errors.full_messages.each do |error| %>
+  <li><%=error %></li>
+<% end %>
 <%= form_for movie do |f| %>
   <p>
     <%=f.label :title, "Title" %> <%=f.text_field :title %>
   </p>
   <p>
-    <%=f.label :director_id, "Director" %> <%= f.collection_select :director_id, Director.all, :id, :name, prompt: true %>
+    <%=f.label :director_name, "Director" %> 
+    <%=f.text_field :director_name %>
+    <%#= f.collection_select :director_id, Director.all, :id, :name, prompt: true %>
   </p>
   <p>
     <%=f.label :year, "Year" %> <%=f.text_field :year %>

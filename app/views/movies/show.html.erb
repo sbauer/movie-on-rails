@@ -1,5 +1,13 @@
 <h1><%=movie.title %> (<%=movie.year %>)</h1>
-<h3><%=movie.director&.name %></h3>
-<p><%=movie.plot_keywords %></p>
+<h3>Directed by <%=movie.director&.name %></h3>
+<p>
+<h4>Plot Keywords</h4>
+<ul>
+<% if movie.plot_keywords %>
+<% movie.plot_keywords.split('|').each do |keyword| %>
+  <li><%=keyword %></li>
+  <% end%>
+<% end %>
+  </ul>
 
 <%=button_to "Edit Movie", edit_movie_path(movie), method: :get %>
