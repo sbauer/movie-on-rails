@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
 
   def show
     movie = Movie.find(params[:id])
+
     render "show", locals: { movie: movie }
   end
 
@@ -40,6 +41,14 @@ class MoviesController < ApplicationController
     end
 
     redirect_to movie
+  end
+
+  def destroy
+    movie = Movie.find(params[:id])
+
+    movie.destroy
+
+    redirect_to movies_path
   end
 
   private

@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <td>
+        Name
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% directors.each do |director| %>
+    <tr>
+      <td><%=link_to director.name, director %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%=button_to "Add New Director", new_director_path, method: :get %>

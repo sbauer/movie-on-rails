@@ -1,0 +1,12 @@
+<ul>
+<% director.errors.full_messages.each do |error| %>
+  <li><%=error %></li>
+<% end %>
+<%= form_for director do |f| %>
+  <p>
+    <%=f.label :name, "Name" %> <%=f.text_field :name %>
+  </p>
+    <p>
+    <%=f.submit director.new_record? ? "Create Director" : "Update" %>
+  </p>
+<% end %>
