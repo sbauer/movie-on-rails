@@ -1,5 +1,5 @@
 <h1><%=movie.title %> (<%=movie.year %>)</h1>
-<h3><%=movie.director %></h3>
+<h3><%=movie.director&.name %></h3>
 <p><%=movie.plot_keywords %></p>
 
 <%=button_to "Edit Movie", edit_movie_path(movie), method: :get %>

@@ -13,7 +13,7 @@
   <% movies.each do |movie| %>
     <tr>
       <td><%=link_to movie.title, movie %></td>
-      <td><%=movie.director %></td>
+      <td><%=movie.director&.name %></td>
     </tr>
   <% end %>
   </tbody>

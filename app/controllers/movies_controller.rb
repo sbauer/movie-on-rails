@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def new
     movie = Movie.new
-    render "show", locals: { movie: movie }
+    render "new", locals: { movie: movie }
   end
 
   def create
@@ -45,6 +45,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :director, :plot_keywords, :year)
+    params.require(:movie).permit(:title, :director_id, :plot_keywords, :year)
   end
 end

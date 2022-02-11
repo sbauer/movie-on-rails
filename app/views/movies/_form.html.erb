@@ -3,7 +3,7 @@
     <%=f.label :title, "Title" %> <%=f.text_field :title %>
   </p>
   <p>
-    <%=f.label :director, "Director" %> <%=f.text_field :director %>
+    <%=f.label :director_id, "Director" %> <%= f.collection_select :director_id, Director.all, :id, :name, prompt: true %>
   </p>
   <p>
     <%=f.label :year, "Year" %> <%=f.text_field :year %>

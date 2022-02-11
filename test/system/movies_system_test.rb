@@ -3,33 +3,28 @@ require "application_system_test_case"
 
 class MoviesSystemTest < ApplicationSystemTestCase
   test "visiting the show" do
-    Movie.create!(title: "Parasite", director: "Bong Joon-ho")
-    Movie.create!(title: "Titanic", director: "James Cameron")
-    visit movie_path(1)
-    assert_text "Parasite"
-    assert_text "Bong Joon-ho"
-  end
-
-  test "see title for movie 2" do
-    Movie.create!(title: "Parasite", director: "Bong Joon-ho")
-    Movie.create!(title: "Titanic", director: "James Cameron")
-    visit movie_path(2)
-    assert_text "Titanic"
+    movie = create(:movie)
+    visit movie_path(movie.id)
+    assert_text movie.title
+    assert_text movie.director.name
   end
 
   test "visiting the index page" do
-    Movie.create!(title: "Parasite", director: "Bong Joon-ho")
-    Movie.create!(title: "Titanic", director: "James Cameron")
+    movie = create(:movie)
+    movie2 = create(:movie)
+
     visit "/movies"
-    assert_text "Parasite"
-    assert_text "Bong Joon-ho"
-    assert_text "Titanic"
-    assert_text "James Cameron"
+    assert_text movie.title
+    assert_text movie.director.name
+    assert_text movie2.title
+    assert_text movie2.director.name
   end
 
   test "adding a new movie" do
     visit movies_path
     assert_button "Add New Movie"
+
+    director = create(:director)
 
     click_on "Add New Movie"
 
@@ -38,18 +33,18 @@ class MoviesSystemTest < ApplicationSystemTestCase
     assert_selector("form")
 
     fill_in :movie_title, with: "Test Movie"
-    fill_in :movie_director, with: "Good Director"
+    select director.name, from: "Director"
     fill_in :movie_year, with: "1997"
     fill_in :movie_plot_keywords, with: "Good stuff"
 
     click_on "Create Movie"
 
     assert_text "Test Movie"
-    assert_text "Good Director"
+    assert_text director.name
   end
 
   test "editing a new movie" do
-    movie = Movie.create(title: "A Movie To Edit")
+    movie = create(:movie)
 
     visit movie_path(movie.id)
 
